@@ -18,11 +18,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     set(CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG} -fsanitize=address")
 endif()
 
-include(zlib)
-include(boost)
-include(openvdb)
-include(eigen)
-include(spdlog)
+find_package(OpenVDB REQUIRED)
+find_package(spdlog REQUIRED)
 
 file(GLOB_RECURSE COACD_SRC "src/*.cc" "src/*.cpp")
 add_library(coacd STATIC ${COACD_SRC})
