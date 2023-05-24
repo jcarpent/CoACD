@@ -22,7 +22,7 @@ namespace coacd
         logger::info("\tRandom Seed:                     {}", params.seed);
     }
 
-    void SaveOBJ(const string &filename, vector<Model> parts, Params &params)
+    void SaveOBJ(const std::string &filename, vector<Model> parts, Params &params)
     {
         vector<int> v_numbers;
         v_numbers.push_back(0);
@@ -45,13 +45,13 @@ namespace coacd
         os.close();
     }
 
-    void SaveOBJs(const string &foldername, const string &filename, vector<Model> parts, Params &params)
+    void SaveOBJs(const std::string &foldername, const std::string &filename, vector<Model> parts, Params &params)
     {
         int n_zero = 3;
         for (int n = 0; n < (int)parts.size(); n++)
         {
-            string num = to_string(n);
-            string idx = string(n_zero - num.length(), '0') + num;
+            std::string num = to_string(n);
+            std::string idx = std::string(n_zero - num.length(), '0') + num;
             ofstream os(foldername + "/" + filename + "_" + idx + ".obj");
             for (int i = 0; i < (int)parts[n].points.size(); ++i)
             {
@@ -145,7 +145,7 @@ namespace coacd
         }
     }
 
-    void SaveVRML(const string &fileName, vector<Model>& meshes, Params &params)
+    void SaveVRML(const std::string &fileName, vector<Model>& meshes, Params &params)
     {
         ofstream foutCH(fileName);
         if (foutCH.is_open())
